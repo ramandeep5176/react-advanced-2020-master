@@ -1,42 +1,46 @@
 import React, { useState } from "react";
 
 const UseStateBasics = () => {
-  const [neww, setNeww] = React.useState(data);
+  const [change, setChange] = useState(`delete all dynamic`);
+
+  const [neww, setNeww] = useState(data);
   const click = (id) => {
-    let newNeww = neww.filter((no) => no.id !== id);
-    const ll = setNeww(newNeww);
+    let newww = neww.filter((whole) => whole.id !== id);
+    setNeww(newww);
   };
   const click2 = () => {
     setNeww([]);
-
-    //
+    setChange(`NOthing TO SEe`);
   };
-
+  // use state
   return (
     <>
-      {neww.map((no) => {
-        const { id, pic, name, job, info } = no;
-        // return console.log(no);
+      {neww.map((whole) => {
+        const { id, pic, name, job, info } = whole;
         return (
-          <div key={id}>
-            {/* <h3>{id}</h3> */}
-            <img style={{ height: "100px" }} src={pic} />
-            <h3>{name}</h3>
+          <>
+            <h2>{id}</h2>
+            <h1>{name}</h1>
             <h4>{job}</h4>
             <p>{info}</p>
-            <button onClick={() => click(id)} className="btn">
-              btn
+            <img style={{ height: "100px" }} src={pic} />
+            <button
+              onClick={() => {
+                click(id);
+              }}
+              className="btn"
+            >
+              delete
             </button>
-          </div>
+          </>
         );
       })}
       <button onClick={click2} className="btn">
-        all
+        {change}
       </button>
     </>
   );
 };
-
 export default UseStateBasics;
 
 const data = [
